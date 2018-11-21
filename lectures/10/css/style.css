@@ -1,0 +1,42 @@
+
+.column
+{
+    width: 100%;
+    float: left;
+    display: inline-block;
+    text-align: center;
+}
+
+.column:hover
+{
+    background-color: #ff0210;
+}
+
+@media only screen and (min-width: 400px)
+{
+    .column{width: 58.33%;}
+}
+
+@media only screen and (min-width: 600px)
+{
+    .column{width: 50%;}
+}
+
+@media only screen and (min-width: 800px)
+{
+    .column{width: 33.33%;}
+}
+
+@media only screen and (min-width: 1000px)
+{
+    .column{width: 25%;}
+}
+
+@media only screen and (min-width: 1200px)
+{
+    .column{width: 20%;}
+}
+
+
+
+
