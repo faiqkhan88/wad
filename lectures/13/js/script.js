@@ -28,21 +28,22 @@ displayCurrentQuestion();
 document.getElementById("quiz-message").style.display = 'none';
 function displayNext() {
 
-    if(currentQuestion < 3)
+    if(currentQuestion <= 3)
     {
         var a = document.querySelector("input[type=radio]:checked");
 
         if(a == null)
         {
             var quizMessage = document.getElementById("quiz-message");
-            quizMessage.style.display = "inline";
+            quizMessage.style.display = "block";
+            /*if()*/
             quizMessage.innerText = 'Select any Option';
             var questionChoiceID = document.getElementById("choice-list");
             questionChoiceID.innerHTML = ''; //clear questions on screen;
         }
-        else
+        else if(currentQuestion<3)
         {
-            if(a == questions[currentQuestion].correctAnswer)
+            if(a.id == questions[currentQuestion].correctAnswer)
             {
                 correctAnswers++;
             }
@@ -50,12 +51,24 @@ function displayNext() {
             questionChoiceID.innerHTML = ''; //clear questions on screen;
             currentQuestion++;
         }
-        displayCurrentQuestion();
+        if(currentQuestion!=3){
+            displayCurrentQuestion();
+        }
+        else
+        {
+            displayScore();
+            var quizMessage = document.getElementById("quiz-message");
+            quizMessage.style.display = "none";
+            currentQuestion++;
+            var Next = document.getElementById("next-btn");
+            Next.innerText='Reset';
+        }
     }
     else
     {
-        displayScore();
+        resetQuiz();
     }
+
 }
 
 
@@ -66,7 +79,7 @@ function displayCurrentQuestion() {
 
     for(var i = 0; i < questions[currentQuestion].choices.length; i++)
     {
-        questionChoiceID.innerHTML += '<input type="radio" name="checked">' + questions[currentQuestion].choices[i] + '<br>';
+        questionChoiceID.innerHTML += '<input id="'+i+'" type="radio" name="checked">' + questions[currentQuestion].choices[i] + '<br>';
     }
 }
 
@@ -74,6 +87,10 @@ function resetQuiz() {
     currentQuestion = 0;
     correctAnswers = 0;
     hideScore();
+    var Next=document.getElementById("next-btn");
+    Next.innerText='Next Question';
+    displayCurrentQuestion();
+
 }
 function displayScore() {
     document.getElementById("result").innerHTML = "you scored: " + correctAnswers + " out of: " + questions.length;
