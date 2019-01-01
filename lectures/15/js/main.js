@@ -153,4 +153,3 @@ month[8] = "September";
 month[9] = "October";
 month[10] = "November";
 month[11] = "December";
->>>>>>> remotes/upstream/master
