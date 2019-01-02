@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+require "../server/functions.php"
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,12 +41,9 @@
                         <div class="input-group-text"><i class="fas fa-list-alt"></i></div>
                     </div>
                     <select class="form-control" id="pro_cat" name="pro_cat">
-                        <option>Select Category</option>
-                        <option>Mobile</option>
-                        <option>Laptop</option>
-                        <option>Tablet</option>
-                        <option>Watch</option>
-                        <option>Camera</option>
+                        <?php
+                        getCatsAdmin();
+                        ?>
                     </select>
                 </div>
             </div>
@@ -58,13 +58,9 @@
                         <div class="input-group-text"><i class="fas fa-stamp"></i></div>
                     </div>
                     <select class="form-control" id="pro_brand" name="pro_brand">
-                        <option>Select Brand</option>
-                        <option>Apple</option>
-                        <option>Samsung</option>
-                        <option>Oppo</option>
-                        <option>Dell</option>
-                        <option>HP</option>
-                        <option>Sony</option>
+                        <?php
+                        getBrandsAdmin();
+                        ?>
                     </select>
                 </div>
             </div>
