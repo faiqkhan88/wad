@@ -31,7 +31,7 @@ require "server/functions.php";
                             <div class="input-group">
                                 <input type="search" class="form-control"
                                        id="search-bar" name="search"
-                                       placeholder="Find Mobile Phones, Laptops, and more..">
+                                       placeholder="Find Mobile Phones, Laptops, and more.." onkeyup="checkSearch(this.value)">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary btn-lg" type="submit"><i class="fas fa-search"></i></button>
                                 </div>
@@ -95,7 +95,7 @@ require "server/functions.php";
     </nav>
     <article id="content" class="container-fluid bg-white">
 
-        <div class="row">
+        <div class="row" id="show">
                 <?php getPro(); ?>
         </div>
     </article>
@@ -111,5 +111,17 @@ require "server/functions.php";
     </footer>
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
+<script>
+    function checkSearch(str) {
+        var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("show").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "check_search.php?s=" + str, true);
+            xmlhttp.send();
+        }
+</script>
 </body>
 </html>
